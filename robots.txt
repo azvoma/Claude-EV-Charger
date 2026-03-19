@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://evchargerinstallationnearme.co.uk/sitemap.xml
+
+# Disallow admin/private areas (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
