@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5metrescrum – Player CV & Highlight Reel</title>
+<meta name="description" content="Elite rugby player profiles, stats, and highlight reels for scouts and coaches. 5metrescrum.com – where talent gets found.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          heading: ['"Barlow Condensed"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+        colors: {
+          electric: '#00F5FF',
+          volt: '#AAFF00',
+          ember: '#FF6B35',
+          pitch: '#050D1A',
+          surface: '#0B1628',
+          card: '#0F1E35',
+          border: 'rgba(255,255,255,0.08)',
+        },
+        boxShadow: {
+          glow: '0 0 20px rgba(0,245,255,0.25)',
+          'glow-volt': '0 0 20px rgba(170,255,0,0.25)',
+          'glow-ember': '0 0 20px rgba(255,107,53,0.25)',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { background-color: #050D1A; font-family: 'Inter', sans-serif; }
+
+  /* Glassmorphism nav */
+  .glass-nav {
+    background: rgba(5, 13, 26, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* Animated gradient hero bg */
+  .hero-bg {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,245,255,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(170,255,0,0.06) 0%, transparent 50%),
+                #050D1A;
+  }
+
+  /* Position badge glow */
+  .badge-electric {
+    background: rgba(0,245,255,0.12);
+    border: 1px solid rgba(0,245,255,0.4);
+    color: #00F5FF;
+    box-shadow: 0 0 12px rgba(0,245,255,0.2);
+  }
+  .badge-volt {
+    background: rgba(170,255,0,0.10);
+    border: 1px solid rgba(170,255,0,0.35);
+    color: #AAFF00;
+    box-shadow: 0 0 12px rgba(170,255,0,0.15);
+  }
+  .badge-ember {
+    background: rgba(255,107,53,0.10);
+    border: 1px solid rgba(255,107,53,0.35);
+    color: #FF6B35;
+  }
+
+  /* Stat card hover */
+  .stat-card {
+    background: #0F1E35;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+  }
+  .stat-card:hover {
+    border-color: rgba(0,245,255,0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0,245,255,0.12);
+  }
+
+  /* Timeline line */
+  .timeline-line {
+    background: linear-gradient(to bottom, #00F5FF, rgba(0,245,255,0.1));
+  }
+
+  /* Video overlay */
+  .video-card:hover .play-overlay { opacity: 1; }
+  .play-overlay {
+    opacity: 0.7;
+    transition: opacity 0.25s;
+  }
+
+  /* CTA button */
+  .btn-primary {
+    background: linear-gradient(135deg, #00F5FF 0%, #0099CC 100%);
+    color: #050D1A;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 24px rgba(0,245,255,0.45);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #050D1A; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,245,255,0.3); border-radius: 3px; }
+
+  /* Avatar placeholder shimmer ring */
+  .avatar-ring {
+    background: conic-gradient(#00F5FF 0deg, #AAFF00 120deg, #FF6B35 240deg, #00F5FF 360deg);
+    padding: 3px;
+    border-radius: 9999px;
+    animation: spin-slow 8s linear infinite;
+  }
+  @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .avatar-inner { background: #0B1628; border-radius: 9999px; }
+</style>
+</head>
+<body class="text-white antialiased">
+
+<!-- ═══════════════════════════════════════
+     STICKY GLASSMORPHIC NAV
+════════════════════════════════════════ -->
+<nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg badge-electric flex items-center justify-center font-heading font-black text-sm">5M</div>
+      <span class="font-heading font-bold text-xl tracking-wide text-white">5metrescrum<span class="text-electric">.com</span></span>
+    </a>
+    <!-- Right side -->
+    <div class="flex items-center gap-3">
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors font-medium">
+        Scouts &amp; Coaches
+      </a>
+      <a href="#contact" class="btn-primary px-4 py-2 rounded-xl text-sm font-heading font-bold tracking-wide">
+        Contact Player
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO – "THE FRONT ROW"
+════════════════════════════════════════ -->
+<section class="hero-bg pt-28 pb-16 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10">
+
+      <!-- Avatar -->
+      <div class="flex-shrink-0 flex flex-col items-center gap-4">
+        <div class="avatar-ring w-48 h-48 sm:w-56 sm:h-56">
+          <div class="avatar-inner w-full h-full flex items-center justify-center overflow-hidden">
+            <!-- Stylised player silhouette placeholder -->
+            <svg viewBox="0 0 200 200" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#0B1628" rx="9999"/>
+              <!-- body silhouette -->
+              <circle cx="100" cy="68" r="28" fill="rgba(0,245,255,0.15)" stroke="#00F5FF" stroke-width="1.5"/>
+              <path d="M52 180 C52 140 75 125 100 122 C125 125 148 140 148 180" fill="rgba(0,245,255,0.08)" stroke="#00F5FF" stroke-width="1.5"/>
+              <!-- jersey number -->
+              <text x="100" y="76" text-anchor="middle" fill="#00F5FF" font-family="Barlow Condensed" font-size="22" font-weight="900">10</text>
+              <!-- arms -->
+              <path d="M72 140 L48 158" stroke="#00F5FF" stroke-width="6" stroke-linecap="round"/>
+              <path d="M128 140 L152 158" stroke="#00F5FF" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Availability badge -->
+        <div class="flex items-center gap-2 px-4 py-1.5 rounded-full badge-volt text-xs font-heading font-bold tracking-widest uppercase">
+          <span class="w-2 h-2 rounded-full bg-volt animate-pulse"></span>
+          Available for Transfer
+        </div>
+      </div>
+
+      <!-- Player info -->
+      <div class="flex-1 text-center lg:text-left">
+        <!-- Section label -->
+        <p class="text-electric text-xs font-heading font-bold tracking-widest uppercase mb-2">Player CV — Season 2025/26</p>
+
+        <!-- Name -->
+        <h1 class="font-heading font-black text-5xl sm:text-6xl lg:text-7xl tracking-tight leading-none text-white mb-3">
+          JAMES<br><span class="text-electric">CALLAHAN</span>
+        </h1>
+
+        <!-- Position badges -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
+          <span class="badge-electric px-4 py-1.5 rounded-full font-heading font-bold text-sm tracking-wide uppercase">⚡ Fly-Half (10)</span>
+          <span class="badge-volt px-4 py-1.5 rounded-full font-heading font-bold text-sm tracking-wide uppercase">Inside Centre (12)</span>
+        </div>
+
+        <!-- Quick info grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto lg:mx-0">
+          <div class="stat-card rounded-xl p-4 text-center">
+            <p class="text-white/40 text-xs font-medium uppercase tracking-wider mb-1">Age</p>
+            <p class="font-heading font-black text-2xl text-white">21</p>
+          </div>
+          <div class="stat-card rounded-xl p-4 text-center">
+            <p class="text-white/40 text-xs font-medium uppercase tracking-wider mb-1">Nationality</p>
+            <p class="font-heading font-black text-xl text-white">🇮🇪 Irish</p>
+          </div>
+          <div class="stat-card rounded-xl p-4 text-center">
+            <p class="text-white/40 text-xs font-medium uppercase tracking-wider mb-1">Passport</p>
+            <p class="font-heading font-black text-lg text-volt">EU + UK</p>
+          </div>
+          <div class="stat-card rounded-xl p-4 text-center">
+            <p class="text-white/40 text-xs font-medium uppercase tracking-wider mb-1">Club</p>
+            <p class="font-heading font-black text-lg text-white">Leinster A</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PHYSICAL STATS – "THE ENGINE ROOM"
+════════════════════════════════════════ -->
+<section class="py-16 px-4 sm:px-6" id="stats">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="flex items-center gap-4 mb-10">
+      <div class="flex-1 h-px bg-gradient-to-r from-electric/40 to-transparent"></div>
+      <h2 class="font-heading font-black text-3xl sm:text-4xl text-white tracking-tight uppercase">
+        <span class="text-electric">The Engine Room</span> &amp; Combine
+      </h2>
+      <div class="flex-1 h-px bg-gradient-to-l from-electric/40 to-transparent"></div>
+    </div>
+
+    <!-- Build stats row -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+
+      <!-- Height -->
+      <div class="stat-card rounded-2xl p-5 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"/></svg>
+          <span class="text-white/50 text-xs uppercase tracking-wider font-medium">Height</span>
+        </div>
+        <p class="font-heading font-black text-4xl text-white leading-none">6'2"</p>
+        <p class="text-white/40 text-xs">188 cm</p>
+      </div>
+
+      <!-- Weight -->
+      <div class="stat-card rounded-2xl p-5 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+          <span class="text-white/50 text-xs uppercase tracking-wider font-medium">Weight</span>
+        </div>
+        <p class="font-heading font-black text-4xl text-white leading-none">96<span class="text-2xl">kg</span></p>
+        <p class="text-white/40 text-xs">211 lbs</p>
+      </div>
+
+      <!-- Bronco Test -->
+      <div class="stat-card rounded-2xl p-5 flex flex-col gap-3 sm:col-span-2">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-volt" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2"/></svg>
+          <span class="text-white/50 text-xs uppercase tracking-wider font-medium">Bronco Test (1.6km)</span>
+        </div>
+        <p class="font-heading font-black text-4xl text-volt leading-none">5:42 <span class="text-2xl">min</span></p>
+        <div class="flex items-center gap-2">
+          <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div class="h-full bg-volt rounded-full" style="width:82%"></div>
+          </div>
+          <span class="text-volt text-xs font-bold">Elite</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sprint stats row -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="stat-card rounded-2xl p-5 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-white/50 text-xs uppercase tracking-wider font-medium">10m Sprint</span>
+        </div>
+        <p class="font-heading font-black text-4xl text-ember leading-none">1.68<span class="text-2xl">s</span></p>
+        <div class="flex items-center gap-2">
+          <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div class="h-full bg-ember rounded-full" style="width:88%"></div>
+          </div>
+          <span class="text-ember text-xs font-bold">Top 10%</span>
+        </div>
+      </div>
+
+      <div class="stat-card rounded-2xl p-5 flex flex-col gap-3">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-ember" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <span class="text-white/50 text-xs uppercase tracking-wider font-medium">40m Sprint</span>
+        </div>
+        <p class="font-heading font-black text-4xl text-ember leading-none">5.01<span class="text-2xl">s</span></p>
+        <div class="flex items-center gap-2">
+          <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+            <div class="h-full bg-ember rounded-full" style="width:85%"></div>
+          </div>
+          <span class="text-ember text-xs font-bold">Top 15%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strength – 1RM row -->
+    <div class="mb-2">
+      <p class="text-white/40 text-xs font-medium uppercase tracking-widest mb-4">Strength — 1 Rep Max</p>
+      <div class="grid grid-cols-3 gap-4">
+
+        <!-- Bench -->
+        <div class="stat-card rounded-2xl p-5 text-center flex flex-col items-center gap-2">
+          <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          <p class="text-white/50 text-xs uppercase tracking-wider font-medium">Bench</p>
+          <p class="font-heading font-black text-3xl sm:text-4xl text-electric leading-none">140<span class="text-xl">kg</span></p>
+        </div>
+
+        <!-- Squat -->
+        <div class="stat-card rounded-2xl p-5 text-center flex flex-col items-center gap-2">
+          <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          <p class="text-white/50 text-xs uppercase tracking-wider font-medium">Squat</p>
+          <p class="font-heading font-black text-3xl sm:text-4xl text-electric leading-none">185<span class="text-xl">kg</span></p>
+        </div>
+
+        <!-- Deadlift -->
+        <div class="stat-card rounded-2xl p-5 text-center flex flex-col items-center gap-2">
+          <svg class="w-6 h-6 text-electric" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"/></svg>
+          <p class="text-white/50 text-xs uppercase tracking-wider font-medium">Deadlift</p>
+          <p class="font-heading font-black text-3xl sm:text-4xl text-electric leading-none">210<span class="text-xl">kg</span></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PLAYING HISTORY TIMELINE
+════════════════════════════════════════ -->
+<section class="py-16 px-4 sm:px-6 bg-surface" id="history">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex items-center gap-4 mb-10">
+      <div class="flex-1 h-px bg-gradient-to-r from-volt/40 to-transparent"></div>
+      <h2 class="font-heading font-black text-3xl sm:text-4xl text-white tracking-tight uppercase">
+        <span class="text-volt">Playing</span> History
+      </h2>
+      <div class="flex-1 h-px bg-gradient-to-l from-volt/40 to-transparent"></div>
+    </div>
+
+    <div class="relative">
+      <!-- Vertical line -->
+      <div class="absolute left-4 sm:left-8 top-0 bottom-0 w-0.5 timeline-line rounded-full"></div>
+
+      <div class="space-y-8 ml-12 sm:ml-20">
+
+        <!-- Entry 1 -->
+        <div class="relative">
+          <div class="absolute -left-10 sm:-left-16 top-1 w-4 h-4 rounded-full bg-electric border-2 border-pitch shadow-glow"></div>
+          <div class="stat-card rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <p class="font-heading font-black text-xl sm:text-2xl text-white">Leinster Academy A</p>
+                <p class="text-white/50 text-sm">United Rugby Championship Development XV</p>
+              </div>
+              <span class="badge-electric px-3 py-1 rounded-full text-xs font-heading font-bold tracking-wide uppercase">2024–Present</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-volt px-3 py-1 rounded-full text-xs font-heading font-bold">⭐ 14 Academy Caps</span>
+              <span class="badge-ember px-3 py-1 rounded-full text-xs font-heading font-bold">Man of Match ×3</span>
+              <span class="text-white/50 text-xs py-1 px-3 rounded-full bg-white/5 font-medium">212 pts scored</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div class="relative">
+          <div class="absolute -left-10 sm:-left-16 top-1 w-4 h-4 rounded-full bg-volt border-2 border-pitch shadow-glow-volt"></div>
+          <div class="stat-card rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <p class="font-heading font-black text-xl sm:text-2xl text-white">Ireland U20</p>
+                <p class="text-white/50 text-sm">World Rugby U20 Championship</p>
+              </div>
+              <span class="badge-volt px-3 py-1 rounded-full text-xs font-heading font-bold tracking-wide uppercase">2023–2024</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-electric px-3 py-1 rounded-full text-xs font-heading font-bold">🏆 8 International Caps</span>
+              <span class="badge-volt px-3 py-1 rounded-full text-xs font-heading font-bold">Grand Slam Winner</span>
+              <span class="text-white/50 text-xs py-1 px-3 rounded-full bg-white/5 font-medium">Top scorer U20 6 Nations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 3 -->
+        <div class="relative">
+          <div class="absolute -left-10 sm:-left-16 top-1 w-4 h-4 rounded-full bg-ember border-2 border-pitch shadow-glow-ember"></div>
+          <div class="stat-card rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <p class="font-heading font-black text-xl sm:text-2xl text-white">Blackrock College RFC</p>
+                <p class="text-white/50 text-sm">Leinster Schools Senior Cup</p>
+              </div>
+              <span class="badge-ember px-3 py-1 rounded-full text-xs font-heading font-bold tracking-wide uppercase">2021–2023</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="badge-ember px-3 py-1 rounded-full text-xs font-heading font-bold">🏅 Cup Finalist 2023</span>
+              <span class="badge-electric px-3 py-1 rounded-full text-xs font-heading font-bold">Schools Player of Year</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Entry 4 -->
+        <div class="relative">
+          <div class="absolute -left-10 sm:-left-16 top-1 w-4 h-4 rounded-full bg-white/30 border-2 border-pitch"></div>
+          <div class="stat-card rounded-2xl p-5 sm:p-6">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <p class="font-heading font-black text-xl sm:text-2xl text-white">Old Belvedere RFC</p>
+                <p class="text-white/50 text-sm">All-Ireland League Division 1A</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-heading font-bold tracking-wide uppercase bg-white/10 text-white/60 border border-white/10">2019–2021</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="text-white/50 text-xs py-1 px-3 rounded-full bg-white/5 font-medium">Youth Player Development</span>
+              <span class="text-white/50 text-xs py-1 px-3 rounded-full bg-white/5 font-medium">AIL Debut Age 17</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     HIGHLIGHT REEL
+════════════════════════════════════════ -->
+<section class="py-16 px-4 sm:px-6" id="highlights">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex items-center gap-4 mb-10">
+      <div class="flex-1 h-px bg-gradient-to-r from-ember/40 to-transparent"></div>
+      <h2 class="font-heading font-black text-3xl sm:text-4xl text-white tracking-tight uppercase">
+        <span class="text-ember">Highlight</span> Reel
+      </h2>
+      <div class="flex-1 h-px bg-gradient-to-l from-ember/40 to-transparent"></div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- Video 1 -->
+      <div class="video-card group relative rounded-2xl overflow-hidden border border-white/08 cursor-pointer">
+        <div class="aspect-video bg-gradient-to-br from-card to-pitch flex items-center justify-center relative">
+          <!-- Thumbnail placeholder -->
+          <div class="absolute inset-0 bg-gradient-to-br from-electric/5 to-transparent"></div>
+          <svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <!-- Play overlay -->
+          <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/40">
+            <div class="w-16 h-16 rounded-full bg-electric flex items-center justify-center shadow-glow">
+              <svg class="w-7 h-7 text-pitch ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <!-- Duration badge -->
+          <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">4:32</span>
+        </div>
+        <div class="p-4 bg-card">
+          <p class="font-heading font-bold text-white text-lg leading-tight">U20 6 Nations — Full Match Performance</p>
+          <p class="text-white/40 text-sm mt-1">Ireland vs France · Feb 2024</p>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-card group relative rounded-2xl overflow-hidden border border-white/08 cursor-pointer">
+        <div class="aspect-video bg-gradient-to-br from-card to-pitch flex items-center justify-center relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-volt/5 to-transparent"></div>
+          <svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/40">
+            <div class="w-16 h-16 rounded-full bg-volt flex items-center justify-center shadow-glow-volt">
+              <svg class="w-7 h-7 text-pitch ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">7:15</span>
+        </div>
+        <div class="p-4 bg-card">
+          <p class="font-heading font-bold text-white text-lg leading-tight">Leinster Academy Highlights 2024/25</p>
+          <p class="text-white/40 text-sm mt-1">Try-scoring, kicking &amp; play-making</p>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-card group relative rounded-2xl overflow-hidden border border-white/08 cursor-pointer sm:col-span-2 lg:col-span-1">
+        <div class="aspect-video bg-gradient-to-br from-card to-pitch flex items-center justify-center relative">
+          <div class="absolute inset-0 bg-gradient-to-br from-ember/5 to-transparent"></div>
+          <svg class="w-12 h-12 text-white/20" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <div class="play-overlay absolute inset-0 flex items-center justify-center bg-black/40">
+            <div class="w-16 h-16 rounded-full bg-ember flex items-center justify-center shadow-glow-ember">
+              <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <span class="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded font-medium">2:48</span>
+        </div>
+        <div class="p-4 bg-card">
+          <p class="font-heading font-bold text-white text-lg leading-tight">Kicking Masterclass — Place &amp; Drop Goals</p>
+          <p class="text-white/40 text-sm mt-1">Training footage · Leinster HPC</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Embed placeholder note -->
+    <p class="text-center text-white/30 text-sm mt-6">YouTube / Vimeo embeds slot directly into these cards via iframe</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CONTACT CTA
+════════════════════════════════════════ -->
+<section class="py-20 px-4 sm:px-6" id="contact">
+  <div class="max-w-6xl mx-auto">
+    <div class="stat-card rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden">
+      <!-- Glow blobs -->
+      <div class="absolute -top-10 -left-10 w-64 h-64 bg-electric/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-volt/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <p class="text-electric text-sm font-heading font-bold tracking-widest uppercase mb-4">Scout · Coach · Agent</p>
+      <h2 class="font-heading font-black text-4xl sm:text-5xl text-white mb-4 leading-tight">Interested in James?</h2>
+      <p class="text-white/50 text-base sm:text-lg max-w-xl mx-auto mb-8">
+        Reach out directly through the platform. All enquiries are managed confidentially and responded to within 24 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:contact@5metrescrum.com" class="btn-primary px-8 py-4 rounded-2xl text-base font-heading font-bold tracking-wide inline-flex items-center gap-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Contact Player
+        </a>
+        <a href="#" class="px-8 py-4 rounded-2xl text-base font-heading font-bold tracking-wide inline-flex items-center gap-2 border border-white/15 text-white/80 hover:border-electric/40 hover:text-electric transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Download CV (PDF)
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer class="border-t border-white/07 py-8 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-6 h-6 rounded badge-electric flex items-center justify-center font-heading font-black text-xs">5M</div>
+      <span class="font-heading font-bold text-white/70">5metrescrum<span class="text-electric">.com</span></span>
+    </div>
+    <p class="text-white/30 text-sm text-center">© 2025 5metrescrum.com · Where rugby talent gets found.</p>
+    <div class="flex gap-4 text-white/30 text-xs">
+      <a href="/privacy" class="hover:text-white/60 transition-colors">Privacy</a>
+      <a href="/terms" class="hover:text-white/60 transition-colors">Terms</a>
+      <a href="#" class="hover:text-white/60 transition-colors">For Clubs</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
