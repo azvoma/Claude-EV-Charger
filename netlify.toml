@@ -1,9 +1,49 @@
 [build]
   publish = "."
 
+# Disable Netlify's automatic trailing slash redirects
+# to prevent conflicts with our static file structure
+[build.processing]
+  skip_processing = false
+
+[[redirects]]
+  from = "/directory"
+  to = "/directory/"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/locations"
+  to = "/locations/"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog/"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
+  force = false
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
     Cache-Control = "public, max-age=3600"
